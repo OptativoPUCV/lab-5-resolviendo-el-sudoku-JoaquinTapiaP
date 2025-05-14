@@ -89,7 +89,7 @@ int is_valid(Node* n){
     int seen[10];
 
     for (int i = 0; i < 9; i++) {
-        for (int k = 0; k < 9; k++) {
+        for (int k = 0; k < 10; k++) {
             seen[k] = 0;
         }
         for (int j = 0; j < 9; j++) {
@@ -101,8 +101,8 @@ int is_valid(Node* n){
             int h = 3 * (i/3) + (j/3);
             int p; 
             for (p = 0; p < 9; p++){
-                int i = 3 * (h / 3) + (h / 3) ;
-                int j = 3 * (h % 3) + (h % 3) ;
+                int i = 3 * (h / 3) + (p / 3) ;
+                int j = 3 * (h % 3) + (p % 3) ;
                 printf("%d ",n->sudo[i][j]);
                 if(p % 3 == 2) 
                     printf("\n");
