@@ -391,3 +391,34 @@ list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type
       ^~~~~~~~
 cc1.exe: all warnings being treated as errors
 538dafa
+Wed, May 14, 2025  9:13:13 AM: 
+ sudoku.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:74:36: error: passing argument 2 of 'pushBack' makes pointer from integer without a cast [-Werror=int-conversion]
+                     pushBack(list, n->sudo[i][col]);
+                                    ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'void *' but argument is of type 'int'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:81:36: error: passing argument 2 of 'pushBack' makes pointer from integer without a cast [-Werror=int-conversion]
+                     pushBack(list, n->sudo[row][j]);
+                                    ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'void *' but argument is of type 'int'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:91:40: error: passing argument 2 of 'pushBack' makes pointer from integer without a cast [-Werror=int-conversion]
+                         pushBack(list, n->sudo[row][col]);
+                                        ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'void *' but argument is of type 'int'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+cc1.exe: all warnings being treated as errors
+6664a25
