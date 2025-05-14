@@ -61,38 +61,35 @@ int is_valid(Node* n){
 }
 
 
-List* get_adj_nodes(Node* n){
-    List* list = createList();
+List* get_adj_nodes(Node* n, int i, int j) {
+    List* list = createList();  // Crear la lista de nodos adyacentes
 
-    for (int j = 0; j < 9; j++) {
-        if (j != n) {
-            Node* adjNode = n->sudo[0][j];
-            if (is_valid(adjNode)) {
-                pushBack(&list, adjNode);
-            }
+    // Obtener los nodos en la misma fila
+    for (int col = 0; col < 9; col++) {
+        if (col != j) {  // No agregar el nodo mismo
+            pushBack(&list, &n->sudo[i][col]);
         }
     }
 
-    for (int i = 0; i < 9; i++) {
-        if (i != n) {
-            Node* adjNode = n->sudo[i][0];
-            if (is_valid(adjNode)) {
-                pushBack(&list, adjNode);
+    // Obtener los nodos en la misma columna
+    for (int row = 0; row < 9; row++) {
+        if (row != i) {  // No agregar el nodo mismo
+            pushBack(&list, &n->sudo[row][j]);
+        }
+    }
+
+    // Obtener los nodos en el mismo subcuadro 3x3
+    int startRow = (i / 3) * 3;  // Determinar la fila inicial del subcuadro
+    int startCol = (j / 3) * 3;  // Determinar la columna inicial del subcuadro
+    for (int row = startRow; row < startRow + 3; row++) {
+        for (int col = startCol; col < startCol + 3; col++) {
+            if (row != i || col != j) {  // Excluir el nodo mismo
+                pushBack(&list, &n->sudo[row][col]);
             }
         }
     }
-    
-    
-    int startRow = (n->i / 3) * 3;
-    int startCol = (n->j / 3) * 3;
-    for (int i = startRow; i < startRow + 3; i++) {
-        for (int j = startCol; j < startCol + 3; j++) {
-            if (i != n->i || j != n->j) {
-                pushBack(&list, n->sudo[i][j]);
-            }
-        }
-    }
-    return list;
+
+    return list;  // Retornar la lista de nodos adyacentes
 }
 
 
