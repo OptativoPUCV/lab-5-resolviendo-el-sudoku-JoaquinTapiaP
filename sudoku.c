@@ -97,37 +97,14 @@ List* get_adj_nodes(Node* n) {
     // Recorremos todas las celdas del Sudoku
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
-            // Excluir las celdas vacías (valor 0)
-            if (n->sudo[row][col] != 0) {
-                // Agregar las celdas de la misma fila
-                for (int j = 0; j < 9; j++) {
-                    if (j != col && n->sudo[row][j] != 0) {  // Excluir la celda misma y las celdas vacías
-                        pushBack(list, &n->sudo[row][j]);
-                    }
-                }
-
-                // Agregar las celdas de la misma columna
-                for (int i = 0; i < 9; i++) {
-                    if (i != row && n->sudo[i][col] != 0) {  // Excluir la celda misma y las celdas vacías
-                        pushBack(list, &n->sudo[i][col]);
-                    }
-                }
-
-                // Agregar las celdas del subcuadro 3x3
-                int startRow = (row / 3) * 3;  // Fila de inicio del subcuadro 3x3
-                int startCol = (col / 3) * 3;  // Columna de inicio del subcuadro 3x3
-                for (int i = startRow; i < startRow + 3; i++) {
-                    for (int j = startCol; j < startCol + 3; j++) {
-                        if ((i != row || j != col) && n->sudo[i][j] != 0) {  // Excluir la celda misma y las celdas vacías
-                            pushBack(list, &n->sudo[i][j]);
-                        }
-                    }
-                }
+            // Excluimos la celda misma (n->sudo[row][col])
+            if (n->sudo[row][col] != 0) {  // Solo consideramos las celdas no vacías
+                pushBack(list, &n->sudo[row][col]);  // Agregamos a la lista
             }
         }
     }
 
-    return list;  // Devolver la lista con los nodos adyacentes
+    return list;  // Devolvemos la lista con los nodos adyacentes
 }
 
 
