@@ -64,27 +64,33 @@ int is_valid(Node* n){
 List* get_adj_nodes(Node* n, int i, int j) {
     List* list = createList();  // Crear la lista de nodos adyacentes
 
-    // Obtener los nodos en la misma fila
-    for (int col = 0; col < 9; col++) {
-        if (col != j) {  // No agregar el nodo mismo
-            pushBack(&list, &n->sudo[i][col]);
-        }
-    }
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            // Obtener los nodos adyacentes a la celda (i, j)
+            
+            // Obtener los nodos en la misma fila
+            for (int col = 0; col < 9; col++) {
+                if (col != j) {  // No agregar la celda misma
+                    pushBack(&list, &n->sudo[i][col]);
+                }
+            }
 
-    // Obtener los nodos en la misma columna
-    for (int row = 0; row < 9; row++) {
-        if (row != i) {  // No agregar el nodo mismo
-            pushBack(&list, &n->sudo[row][j]);
-        }
-    }
+            // Obtener los nodos en la misma columna
+            for (int row = 0; row < 9; row++) {
+                if (row != i) {  // No agregar la celda misma
+                    pushBack(&list, &n->sudo[row][j]);
+                }
+            }
 
-    // Obtener los nodos en el mismo subcuadro 3x3
-    int startRow = (i / 3) * 3;  // Determinar la fila inicial del subcuadro
-    int startCol = (j / 3) * 3;  // Determinar la columna inicial del subcuadro
-    for (int row = startRow; row < startRow + 3; row++) {
-        for (int col = startCol; col < startCol + 3; col++) {
-            if (row != i || col != j) {  // Excluir el nodo mismo
-                pushBack(&list, &n->sudo[row][col]);
+            // Obtener los nodos en el mismo subcuadro 3x3
+            int startRow = (i / 3) * 3;  // Determinar la fila inicial del subcuadro
+            int startCol = (j / 3) * 3;  // Determinar la columna inicial del subcuadro
+            for (int row = startRow; row < startRow + 3; row++) {
+                for (int col = startCol; col < startCol + 3; col++) {
+                    if (row != i || col != j) {  // Excluir la celda misma
+                        pushBack(&list, &n->sudo[row][col]);
+                    }
+                }
             }
         }
     }

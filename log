@@ -306,3 +306,57 @@ sudoku.c:64:7: note: declared here
        ^~~~~~~~~~~~~
 cc1.exe: all warnings being treated as errors
 1cd1241
+Wed, May 14, 2025  9:12:46 AM: 
+ sudoku.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:74:30: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                     pushBack(&list, &n->sudo[i][col]);
+                              ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:81:30: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                     pushBack(&list, &n->sudo[row][j]);
+                              ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:91:34: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                         pushBack(&list, &n->sudo[row][col]);
+                                  ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+test.c: In function 'adj_test1':
+test.c:62:17: error: too few arguments to function 'get_adj_nodes'
+     List* adj = get_adj_nodes(initial);
+                 ^~~~~~~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:64:7: note: declared here
+ List* get_adj_nodes(Node* n, int i, int j) {
+       ^~~~~~~~~~~~~
+test.c:95:11: error: too few arguments to function 'get_adj_nodes'
+     adj = get_adj_nodes(initial);
+           ^~~~~~~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:64:7: note: declared here
+ List* get_adj_nodes(Node* n, int i, int j) {
+       ^~~~~~~~~~~~~
+test.c: In function 'test_mod_adj':
+test.c:155:17: error: too few arguments to function 'get_adj_nodes'
+     List* adj = get_adj_nodes(initial);
+                 ^~~~~~~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:64:7: note: declared here
+ List* get_adj_nodes(Node* n, int i, int j) {
+       ^~~~~~~~~~~~~
+cc1.exe: all warnings being treated as errors
+86974b9
