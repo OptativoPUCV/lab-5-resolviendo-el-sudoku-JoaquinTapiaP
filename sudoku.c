@@ -61,7 +61,7 @@ int is_valid(Node* n){
 }
 
 
-List* get_adj_nodes(Node* n, int i, int j) {
+List* get_adj_nodes(Node* n) {
     List* list = createList();  // Crear la lista de nodos adyacentes
 
     for (int i = 0; i < 9; i++) {

@@ -360,3 +360,34 @@ sudoku.c:64:7: note: declared here
        ^~~~~~~~~~~~~
 cc1.exe: all warnings being treated as errors
 86974b9
+Wed, May 14, 2025  9:12:56 AM: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:74:30: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                     pushBack(&list, &n->sudo[i][col]);
+                              ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:81:30: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                     pushBack(&list, &n->sudo[row][j]);
+                              ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:91:34: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                         pushBack(&list, &n->sudo[row][col]);
+                                  ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+cc1.exe: all warnings being treated as errors
+538dafa
