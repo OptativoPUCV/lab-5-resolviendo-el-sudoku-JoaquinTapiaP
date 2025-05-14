@@ -52,7 +52,7 @@ int is_valid(Node* n){
         for (int j = 0; j < 9; j++) {
             int num = n->sudo[i][j];
             if (num != 0) {
-                if (seen[num]) return 0;
+                if (seen[num] = 0) return 0;
                 seen[num] = 1;
             }
         }
