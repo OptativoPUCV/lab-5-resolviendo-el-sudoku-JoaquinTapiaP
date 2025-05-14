@@ -65,7 +65,7 @@ List* get_adj_nodes(Node* n){
     List* list = createList();
 
     for (int j = 0; j < 9; j++) {
-        if (j != n->j) {
+        if (j != n) {
             Node* adjNode = n->sudo[0][j];
             if (is_valid(adjNode)) {
                 pushBack(&list, adjNode);
@@ -74,8 +74,8 @@ List* get_adj_nodes(Node* n){
     }
 
     for (int i = 0; i < 9; i++) {
-        if (i != n->i) {
-            Node* adjNode = sudo[i][0];
+        if (i != n) {
+            Node* adjNode = n->sudo[i][0];
             if (is_valid(adjNode)) {
                 pushBack(&list, adjNode);
             }
