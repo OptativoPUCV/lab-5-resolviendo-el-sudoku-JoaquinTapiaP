@@ -556,3 +556,17 @@ sudoku.c:104:21: error: unused variable 'i' [-Werror=unused-variable]
                      ^
 cc1.exe: all warnings being treated as errors
 d1d2d61
+Wed, May 14, 2025  9:53:54 AM: 
+ sudoku.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'is_valid':
+sudoku.c:105:21: error: unused variable 'j' [-Werror=unused-variable]
+                 int j = 3 * (h % 3) + (h % 3) ;
+                     ^
+sudoku.c:104:21: error: unused variable 'i' [-Werror=unused-variable]
+                 int i = 3 * (h / 3) + (h / 3) ;
+                     ^
+cc1.exe: all warnings being treated as errors
+ba6e10d
