@@ -44,19 +44,28 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-
-    return 1;
+    int seen[10];
+    for (int i = 0; i < 9; i++) {
+        for (int k = 0; k < 9; k++) {
+            seen[k] = 0;
+        }
+        for (int j = 0; j < 9; j++) {
+            int num = n->sudo[i][j];
+            if (num != 0) {
+                if (seen[num]) return 0;
+                seen[num] = 1;
+            }
+        }
+    }
 }
 
 
 List* get_adj_nodes(Node* n){
     List* list = createList();
-    for (int j = 0; j < 9; j++) {
-        if (j != n->j) {  // Excluir el nodo mismo
-            Node* adjacent = /* obtener nodo en la fila i, columna j */;
-            pushBack(list, adjacent);
-        }
-    }
+    
+    
+
+
 
     return list;
 }
