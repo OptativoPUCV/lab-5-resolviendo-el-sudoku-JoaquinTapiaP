@@ -98,8 +98,18 @@ List* get_adj_nodes(Node* n) {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
             // Excluimos la celda misma (n->sudo[row][col])
-            if (n->sudo[row][col] != 0) {  // Solo consideramos las celdas no vacías
-                pushBack(list, &n->sudo[row][col]);  // Agregamos a la lista
+            if (n->sudo[row][col] == 0) {  // Solo consideramos las celdas no vacías
+                for (int val = 1; val < 9; val++) {
+                    Node* newNode = copy(n);
+                    newNode->sudo[row][col] = val;
+
+                    if (is_valid(newNode)){
+                        pushBack(list, newNode);
+                    }
+                    else 
+                        free(newNode);
+                }
+                  // Agregamos a la lista
             }
         }
     }
