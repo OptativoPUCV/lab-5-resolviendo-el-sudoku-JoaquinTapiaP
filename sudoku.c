@@ -92,42 +92,21 @@ int is_valid(Node* n){
 
 
 List* get_adj_nodes(Node* n) {
-    List* list = createList();  // Crear la lista de nodos adyacentes
+    List* list = createList();  // Crear una lista para almacenar los nodos adyacentes
 
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            
-            // Obtener los nodos adyacentes a la celda (i, j)
-            
-            // Obtener los nodos en la misma fila
-            for (int col = 0; col < 9; col++) {
-                if (col != j) {  // No agregar la celda misma
-                    pushBack(list, &n->sudo[i][col]);  // Agregar como void*
-                }
-            }
-
-            // Obtener los nodos en la misma columna
-            for (int row = 0; row < 9; row++) {
-                if (row != i) {  // No agregar la celda misma
-                    pushBack(list, &n->sudo[row][j]);  // Agregar como void*
-                }
-            }
-
-            // Obtener los nodos en el mismo subcuadro 3x3
-            int startRow = (i / 3) * 3;  // Determinar la fila inicial del subcuadro
-            int startCol = (j / 3) * 3;  // Determinar la columna inicial del subcuadro
-            for (int row = startRow; row < startRow + 3; row++) {
-                for (int col = startCol; col < startCol + 3; col++) {
-                    if (row != i || col != j) {  // Excluir la celda misma
-                        pushBack(list, &n->sudo[row][col]);  // Agregar como void*
-                    }
-                }
+    // Recorremos todas las celdas del Sudoku
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            // Excluimos la celda misma (n->sudo[row][col])
+            if (n->sudo[row][col] != 0) {  // Solo consideramos las celdas no vacías
+                pushBack(list, &n->sudo[row][col]);  // Agregamos a la lista
             }
         }
     }
 
-    return list;  // Retornar la lista de nodos adyacentes
+    return list;  // Devolvemos la lista con los nodos adyacentes
 }
+
 
 
 int is_final(Node* n){
