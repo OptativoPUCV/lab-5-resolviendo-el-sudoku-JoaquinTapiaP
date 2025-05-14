@@ -98,7 +98,7 @@ List* get_adj_nodes(Node* n) {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
             // Excluimos la celda misma (n->sudo[row][col])
-            if (n->sudo[row][col] == 0) {  // Solo consideramos las celdas no vacías
+            if (n->sudo[row][col] != 0) {  // Solo consideramos las celdas no vacías
                 pushBack(list, &n->sudo[row][col]);  // Agregamos a la lista
             }
         }
