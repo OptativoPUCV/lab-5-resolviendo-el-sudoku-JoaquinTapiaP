@@ -48,3 +48,21 @@ list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type
       ^~~~~~~~
 cc1.exe: all warnings being treated as errors
 c68561b
+Wed, May 14, 2025  8:41:38 AM: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'read_file':
+sudoku.c:24:9: error: unused variable 'i' [-Werror=unused-variable]
+     int i , j;
+         ^
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:55:19: error: 'Node {aka struct <anonymous>}' has no member named 'j'
+         if (j != n->j) {  // Excluir el nodo mismo
+                   ^~
+sudoku.c:56:72: error: expected expression before ';' token
+             Node* adjacent = /* obtener nodo en la fila i, columna j */;
+                                                                        ^
+cc1.exe: all warnings being treated as errors
+8444596
