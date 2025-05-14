@@ -54,7 +54,7 @@ List* get_adj_nodes(Node* n){
     for (int j = 0; j < 9; j++) {
         if (j != n->j) {  // Excluir el nodo mismo
             Node* adjacent = /* obtener nodo en la fila i, columna j */;
-            addToList(&list, adjacent);
+            pushBack(&list, adjacent);
         }
     }
 
