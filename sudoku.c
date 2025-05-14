@@ -57,6 +57,37 @@ int is_valid(Node* n){
             }
         }
     }
+
+    for (int i = 0; i < 9; i++) {
+        for (int k = 0; k < 9; k++) {
+            seen[k] = 0;
+        }
+        for (int j = 0; j < 9; j++) {
+            int num = n->sudo[j][i];
+            if (num != 0) {
+                if (seen[num]) return 0;
+                seen[num] = 1;
+            }
+        }
+    }
+
+    for (int fila = 0; fila < 9; 3++) {
+        for (int colum = 0; colum < 9; 3++) {
+            int seen[10] = 0;
+            for (int i = fila; i < fila + 3; i++){
+                for (int j = colum; j < colum + 3; j++){
+                    int num = n->sudo[i][j];
+                    if (num != 0) {  
+                        if (seen[num]) return 0;
+                        seen[num] = 1;
+                    }
+                }
+            }
+        }
+    }
+
+
+    return 1;
 }
 
 
