@@ -125,3 +125,67 @@ Wed, May 14, 2025  8:57:56 AM:
  tests:  0|5
 total_score: 0/70
 24b267e
+Wed, May 14, 2025  9:05:11 AM: 
+ sudoku.c | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:68:19: error: 'Node {aka struct <anonymous>}' has no member named 'j'
+         if (j != n->j) {
+                   ^~
+sudoku.c:69:29: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
+             Node* adjNode = n->sudo[0][j];
+                             ^
+sudoku.c:71:26: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                 pushBack(&list, adjNode);
+                          ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:77:19: error: 'Node {aka struct <anonymous>}' has no member named 'i'
+         if (i != n->i) {
+                   ^~
+sudoku.c:78:29: error: 'sudo' undeclared (first use in this function)
+             Node* adjNode = sudo[i][0];
+                             ^~~~
+sudoku.c:78:29: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:80:26: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                 pushBack(&list, adjNode);
+                          ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:86:22: error: 'Node {aka struct <anonymous>}' has no member named 'i'
+     int startRow = (n->i / 3) * 3;
+                      ^~
+sudoku.c:87:22: error: 'Node {aka struct <anonymous>}' has no member named 'j'
+     int startCol = (n->j / 3) * 3;
+                      ^~
+sudoku.c:90:23: error: 'Node {aka struct <anonymous>}' has no member named 'i'
+             if (i != n->i || j != n->j) {
+                       ^~
+sudoku.c:90:36: error: 'Node {aka struct <anonymous>}' has no member named 'j'
+             if (i != n->i || j != n->j) {
+                                    ^~
+sudoku.c:91:26: error: passing argument 1 of 'pushBack' from incompatible pointer type [-Werror=incompatible-pointer-types]
+                 pushBack(&list, n->sudo[i][j]);
+                          ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'List * {aka struct List *}' but argument is of type 'List ** {aka struct List **}'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+In file included from test.c:5:0:
+sudoku.c:91:33: error: passing argument 2 of 'pushBack' makes pointer from integer without a cast [-Werror=int-conversion]
+                 pushBack(&list, n->sudo[i][j]);
+                                 ^
+In file included from test.c:4:0:
+list.h:23:6: note: expected 'void *' but argument is of type 'int'
+ void pushBack(List* list, void* data);
+      ^~~~~~~~
+cc1.exe: all warnings being treated as errors
+5362c73

@@ -63,11 +63,35 @@ int is_valid(Node* n){
 
 List* get_adj_nodes(Node* n){
     List* list = createList();
+
+    for (int j = 0; j < 9; j++) {
+        if (j != n->j) {
+            Node* adjNode = n->sudo[0][j];
+            if (is_valid(adjNode)) {
+                pushBack(&list, adjNode);
+            }
+        }
+    }
+
+    for (int i = 0; i < 9; i++) {
+        if (i != n->i) {
+            Node* adjNode = sudo[i][0];
+            if (is_valid(adjNode)) {
+                pushBack(&list, adjNode);
+            }
+        }
+    }
     
     
-
-
-
+    int startRow = (n->i / 3) * 3;
+    int startCol = (n->j / 3) * 3;
+    for (int i = startRow; i < startRow + 3; i++) {
+        for (int j = startCol; j < startCol + 3; j++) {
+            if (i != n->i || j != n->j) {
+                pushBack(&list, n->sudo[i][j]);
+            }
+        }
+    }
     return list;
 }
 
