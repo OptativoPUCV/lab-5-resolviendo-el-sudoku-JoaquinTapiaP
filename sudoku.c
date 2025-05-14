@@ -66,19 +66,20 @@ List* get_adj_nodes(Node* n) {
 
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
+            
             // Obtener los nodos adyacentes a la celda (i, j)
             
             // Obtener los nodos en la misma fila
             for (int col = 0; col < 9; col++) {
                 if (col != j) {  // No agregar la celda misma
-                    pushBack(list, n->sudo[i][col]);
+                    pushBack(list, &n->sudo[i][col]);  // Agregar como void*
                 }
             }
 
             // Obtener los nodos en la misma columna
             for (int row = 0; row < 9; row++) {
                 if (row != i) {  // No agregar la celda misma
-                    pushBack(list, n->sudo[row][j]);
+                    pushBack(list, &n->sudo[row][j]);  // Agregar como void*
                 }
             }
 
@@ -88,7 +89,7 @@ List* get_adj_nodes(Node* n) {
             for (int row = startRow; row < startRow + 3; row++) {
                 for (int col = startCol; col < startCol + 3; col++) {
                     if (row != i || col != j) {  // Excluir la celda misma
-                        pushBack(list, n->sudo[row][col]);
+                        pushBack(list, &n->sudo[row][col]);  // Agregar como void*
                     }
                 }
             }
