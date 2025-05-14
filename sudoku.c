@@ -73,7 +73,7 @@ int is_valid(Node* n){
 
     for (int fila = 0; fila < 9; 3++) {
         for (int colum = 0; colum < 9; 3++) {
-            int seen[10] = 0;
+            int seen[10];
             for (int i = fila; i < fila + 3; i++){
                 for (int j = colum; j < colum + 3; j++){
                     int num = n->sudo[i][j];
