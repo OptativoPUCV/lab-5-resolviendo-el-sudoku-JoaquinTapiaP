@@ -126,12 +126,12 @@ Node* DFS(Node* initial, int* cont){
         return initial;
     
     List* adjuntos = get_adj_nodes(initial);
-    Node* next = first(adjuntos);
+    Node* siguiente = first(adjuntos);
 
     while (next != NULL) {
-        Node* result = DFS(next, cont);
+        Node* result = DFS(siguiente, cont);
         if (result != NULL) return result;
-        next = nextList(adjuntos);
+        siguiente = next(adjuntos);
     }
     return NULL;
 }

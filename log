@@ -642,3 +642,14 @@ sudoku.c:134:14: error: assignment makes pointer from integer without a cast [-W
               ^
 cc1.exe: all warnings being treated as errors
 7281e6e
+Sat, May 17, 2025  3:21:53 PM: 
+ sudoku.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'DFS':
+sudoku.c:131:17: error: the comparison will always evaluate as 'true' for the address of 'next' will never be NULL [-Werror=address]
+     while (next != NULL) {
+                 ^~
+cc1.exe: all warnings being treated as errors
+0cd0ab1
