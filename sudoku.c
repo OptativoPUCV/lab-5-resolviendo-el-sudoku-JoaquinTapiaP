@@ -46,7 +46,7 @@ void print_node(Node* n){
 int is_valid(Node* n){
     int seen[10];
 
-    for (int i = 0; i < 9; i++) {
+    /*for (int i = 0; i < 9; i++) {
         for (int k = 0; k < 10; k++) {
             seen[k] = 0;
         }
@@ -56,7 +56,7 @@ int is_valid(Node* n){
                 return 0;
             }
             seen[num] = 1;
-            /*int h = 3 * (i/3) + (j/3);
+            int h = 3 * (i/3) + (j/3);
             int p; 
             for (p = 0; p < 9; p++){
                 int i = 3 * (h / 3) + (p / 3) ;
@@ -64,11 +64,44 @@ int is_valid(Node* n){
                 printf("%d ",n->sudo[i][j]);
                 if(p % 3 == 2) 
                     printf("\n");
-            }*/
+            }
             
         }
 
+    }*/
+    
+    for (int i = 0; i < 9; i++) {
+        for (int k = 0; k < 10; k++) seen[k] = 0;
+        for (int j = 0; j < 9; j++) {
+            int num = n->sudo[i][j];
+            if (num && seen[num]) return 0;
+            seen[num] = 1;
+        }
     }
+
+    for (int j = 0; j < 9; j++) {
+        for (int k = 0; k < 10; k++) seen[k] = 0;
+        for (int i = 0; i < 9; i++) {
+            int num = n->sudo[i][j];
+            if (num && seen[num]) return 0;
+            seen[num] = 1;
+        }
+    }
+
+    for (int block = 0; block < 9; block++) {
+        for (int k = 0; k < 10; k++) seen[k] = 0;
+
+        for (int p = 0; p < 9; p++) {
+            int i = 3 * (block / 3) + (p / 3);
+            int j = 3 * (block % 3) + (p % 3);
+            int num = n->sudo[i][j];
+
+            if (num && seen[num]) return 0;
+            seen[num] = 1;
+        }
+    }
+
+    
     return 1;
 }
 
