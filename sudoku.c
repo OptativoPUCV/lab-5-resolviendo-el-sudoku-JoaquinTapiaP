@@ -76,11 +76,9 @@ int is_valid(Node* n){
 List* get_adj_nodes(Node* n) {
     List* list = createList();  // Crear una lista para almacenar los nodos adyacentes
 
-    // Recorremos todas las celdas del Sudoku
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
-            // Excluimos la celda misma (n->sudo[row][col])
-            if (n->sudo[row][col] == 0) {  // Solo consideramos las celdas no vacías
+            if (n->sudo[row][col] == 0) { 
                 for (int val = 1; val < 9; val++) {
                     Node* newNode = copy(n);
                     newNode->sudo[row][col] = val;
@@ -91,7 +89,7 @@ List* get_adj_nodes(Node* n) {
                     else 
                         free(newNode);
                 }
-                  // Agregamos a la lista
+                return list;
             }
         }
     }
