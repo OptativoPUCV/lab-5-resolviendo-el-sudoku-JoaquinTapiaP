@@ -128,7 +128,7 @@ Node* DFS(Node* initial, int* cont){
     List* adjuntos = get_adj_nodes(initial);
     Node* siguiente = first(adjuntos);
 
-    while (next != NULL) {
+    while (siguiente != NULL) {
         Node* result = DFS(siguiente, cont);
         if (result != NULL) return result;
         siguiente = next(adjuntos);
