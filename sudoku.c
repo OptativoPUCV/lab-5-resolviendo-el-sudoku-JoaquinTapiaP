@@ -120,6 +120,19 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
+    (*cont)++;
+
+    if (is_final(initial))
+        return initial;
+    
+    List* adjuntos = get_adj_nodes(initial);
+    Node* next = first(adjuntos);
+
+    while (next != NULL) {
+        Node* result = DFS(next, cont);
+        if (result != NULL) return result;
+        next = nextList(adjuntos);
+    }
     return NULL;
 }
 
